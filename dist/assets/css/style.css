@@ -1868,10 +1868,21 @@ a:hover {
     position: relative;
     background-color: #202020;
     border-radius: 0.5rem;
+    opacity: 0;
+    -webkit-transform: translateY(-50px);
+    transform: translateY(-50px);
+    transition: opacity .3s ease-in-out,-webkit-transform .2s ease-in-out;
+    transition: transform .2s ease-in-out,opacity .3s ease-in-out;
+    transition: transform .2s ease-in-out,opacity .3s ease-in-out,-webkit-transform .2s ease-in-out;
 }
 
 .modal__content--contact {
     padding: 2.5rem;
+}
+
+.modal__content--story {
+    padding: 0;
+    background: none;
 }
 
 .modal__close {
@@ -1915,4 +1926,9 @@ a:hover {
 
 .modal__footer a:hover {
     text-decoration: none;
+}
+
+.modal__footer .modal__video {
+    display: block;
+    margin: 0 auto;
 }
