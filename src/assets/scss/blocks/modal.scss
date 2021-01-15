@@ -32,7 +32,11 @@
     opacity: 0;
 
     transform: translateY(-50px);
-    transition: transform .2s ease-in-out,opacity .3s ease-in-out;
+    transition: transform 0.2s ease-in-out, opacity 0.3s ease-in-out;
+
+    @include breakpoint($tablet-bp) {
+        padding: 5rem 3rem 3rem;
+    }
 
     &--contact {
         padding: 2.5rem;

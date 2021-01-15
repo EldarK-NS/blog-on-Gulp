@@ -108,14 +108,25 @@ eval("const modalBtn = document.querySelectorAll('[data-modal]');\r\nconst body 
 
 /***/ }),
 
+/***/ "./src/assets/js/textarea.js":
+/*!***********************************!*\
+  !*** ./src/assets/js/textarea.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("const textArea = document.querySelectorAll('[data-autoresize]');\r\n\r\n\r\ntextArea.forEach(item => {\r\n    let textAreaH = item.offsetHeight;\r\n    item.addEventListener('input', event => {\r\n        let $this = event.target;\r\n\r\n        $this.style.height = textAreaH + 'px'\r\n        $this.style.height = $this.scrollHeight + 'px'\r\n    });\r\n});\n\n//# sourceURL=webpack:///./src/assets/js/textarea.js?");
+
+/***/ }),
+
 /***/ 0:
-/*!*******************************************************************!*\
-  !*** multi ./src/assets/js/mobileNav.js ./src/assets/js/modal.js ***!
-  \*******************************************************************/
+/*!***********************************************************************************************!*\
+  !*** multi ./src/assets/js/mobileNav.js ./src/assets/js/modal.js ./src/assets/js/textarea.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! C:\\Users\\aprik\\OneDrive\\Рабочий стол\\projecrs\\Blog\\src\\assets\\js\\mobileNav.js */\"./src/assets/js/mobileNav.js\");\nmodule.exports = __webpack_require__(/*! C:\\Users\\aprik\\OneDrive\\Рабочий стол\\projecrs\\Blog\\src\\assets\\js\\modal.js */\"./src/assets/js/modal.js\");\n\n\n//# sourceURL=webpack:///multi_./src/assets/js/mobileNav.js_./src/assets/js/modal.js?");
+eval("__webpack_require__(/*! C:\\Users\\aprik\\OneDrive\\Рабочий стол\\projecrs\\Blog\\src\\assets\\js\\mobileNav.js */\"./src/assets/js/mobileNav.js\");\n__webpack_require__(/*! C:\\Users\\aprik\\OneDrive\\Рабочий стол\\projecrs\\Blog\\src\\assets\\js\\modal.js */\"./src/assets/js/modal.js\");\nmodule.exports = __webpack_require__(/*! C:\\Users\\aprik\\OneDrive\\Рабочий стол\\projecrs\\Blog\\src\\assets\\js\\textarea.js */\"./src/assets/js/textarea.js\");\n\n\n//# sourceURL=webpack:///multi_./src/assets/js/mobileNav.js_./src/assets/js/modal.js_./src/assets/js/textarea.js?");
 
 /***/ })
 

@@ -333,8 +333,11 @@ body {
   font-size: 1.4rem;
   line-height: 1.5;
   color: #fff; }
-  body.no-scroll, body.show-sidebar {
+  body.no-scroll {
     overflow: hidden; }
+  @media screen and (max-width: 991px) {
+    body.show-sidebar {
+      overflow: hidden; } }
 
 *,
 * before,
@@ -798,12 +801,12 @@ a {
 
 .add-post__form {
   display: flex;
-  align-items: center; }
+  align-items: flex-end; }
 
 .add-post__textarea {
   display: block;
   flex-grow: 1;
-  height: 26px;
+  height: 34px;
   overflow: hidden;
   border: none;
   background: transparent;
@@ -1169,7 +1172,7 @@ a {
   .form__control::placeholder {
     color: rgba(255, 255, 255, 0.2); }
   .form__control--textarea {
-    height: 30px;
+    height: 32px;
     overflow: hidden;
     resize: none; }
 
@@ -1334,7 +1337,10 @@ a {
   border-radius: 0.5rem;
   opacity: 0;
   transform: translateY(-50px);
-  transition: transform .2s ease-in-out,opacity .3s ease-in-out; }
+  transition: transform 0.2s ease-in-out, opacity 0.3s ease-in-out; }
+  @media screen and (max-width: 991px) {
+    .modal__content {
+      padding: 5rem 3rem 3rem; } }
   .modal__content--contact {
     padding: 2.5rem; }
   .modal__content--story {
