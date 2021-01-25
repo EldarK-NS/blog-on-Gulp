@@ -1,6 +1,6 @@
 "use strict";
 
-const {src, dest} = require("gulp");
+const { src, dest } = require("gulp");
 const gulp = require("gulp");
 const autoprefixer = require("gulp-autoprefixer");
 const cssbeautify = require("gulp-cssbeautify");
@@ -25,25 +25,25 @@ const distPath = 'dist/';
 
 const path = {
     build: {
-        html:   distPath,
-        js:     distPath + "assets/js/",
-        css:    distPath + "assets/css/",
+        html: distPath,
+        js: distPath + "assets/js/",
+        css: distPath + "assets/css/",
         images: distPath + "assets/images/",
-        fonts:  distPath + "assets/fonts/"
+        fonts: distPath + "assets/fonts/"
     },
     src: {
-        html:   srcPath + "*.html",
-        js:     srcPath + "assets/js/*.js",
-        css:    srcPath + "assets/scss/*.scss",
+        html: srcPath + "*.html",
+        js: srcPath + "assets/js/*.js",
+        css: srcPath + "assets/scss/*.scss",
         images: srcPath + "assets/images/**/*.{jpg,png,svg,gif,ico,webp,webmanifest,xml,json}",
-        fonts:  srcPath + "assets/fonts/**/*.{eot,woff,woff2,ttf,svg}"
+        fonts: srcPath + "assets/fonts/**/*.{eot,woff,woff2,ttf,svg}"
     },
     watch: {
-        html:   srcPath + "**/*.html",
-        js:     srcPath + "assets/js/**/*.js",
-        css:    srcPath + "assets/scss/**/*.scss",
+        html: srcPath + "**/*.html",
+        js: srcPath + "assets/js/**/*.js",
+        css: srcPath + "assets/scss/**/*.scss",
         images: srcPath + "assets/images/**/*.{jpg,png,svg,gif,ico,webp,webmanifest,xml,json}",
-        fonts:  srcPath + "assets/fonts/**/*.{eot,woff,woff2,ttf,svg}"
+        fonts: srcPath + "assets/fonts/**/*.{eot,woff,woff2,ttf,svg}"
     },
     clean: "./" + distPath
 }
@@ -62,28 +62,28 @@ function serve() {
 
 function html(cb) {
     panini.refresh();
-    return src(path.src.html, {base: srcPath})
+    return src(path.src.html, { base: srcPath })
         .pipe(plumber())
         .pipe(panini({
-            root:       srcPath,
-            layouts:    srcPath + 'layouts/',
-            partials:   srcPath + 'partials/',
-            helpers:    srcPath + 'helpers/',
-            data:       srcPath + 'data/'
+            root: srcPath,
+            layouts: srcPath + 'layouts/',
+            partials: srcPath + 'partials/',
+            helpers: srcPath + 'helpers/',
+            data: srcPath + 'data/'
         }))
         .pipe(dest(path.build.html))
-        .pipe(browserSync.reload({stream: true}));
+        .pipe(browserSync.reload({ stream: true }));
 
     cb();
 }
 
 function css(cb) {
-    return src(path.src.css, {base: srcPath + "assets/scss/"})
+    return src(path.src.css, { base: srcPath + "assets/scss/" })
         .pipe(plumber({
-            errorHandler : function(err) {
+            errorHandler: function (err) {
                 notify.onError({
-                    title:    "SCSS Error",
-                    message:  "Error: <%= error.message %>"
+                    title: "SCSS Error",
+                    message: "Error: <%= error.message %>"
                 })(err);
                 this.emit('end');
             }
@@ -108,18 +108,18 @@ function css(cb) {
             extname: ".css"
         }))
         .pipe(dest(path.build.css))
-        .pipe(browserSync.reload({stream: true}));
+        .pipe(browserSync.reload({ stream: true }));
 
     cb();
 }
 
 function cssWatch(cb) {
-    return src(path.src.css, {base: srcPath + "assets/scss/"})
+    return src(path.src.css, { base: srcPath + "assets/scss/" })
         .pipe(plumber({
-            errorHandler : function(err) {
+            errorHandler: function (err) {
                 notify.onError({
-                    title:    "SCSS Error",
-                    message:  "Error: <%= error.message %>"
+                    title: "SCSS Error",
+                    message: "Error: <%= error.message %>"
                 })(err);
                 this.emit('end');
             }
@@ -132,65 +132,65 @@ function cssWatch(cb) {
             extname: ".css"
         }))
         .pipe(dest(path.build.css))
-        .pipe(browserSync.reload({stream: true}));
+        .pipe(browserSync.reload({ stream: true }));
 
     cb();
 }
 
 function js(cb) {
-    return src(path.src.js, {base: srcPath + 'assets/js/'})
+    return src(path.src.js, { base: srcPath + 'assets/js/' })
         .pipe(plumber({
-            errorHandler : function(err) {
+            errorHandler: function (err) {
                 notify.onError({
-                    title:    "JS Error",
-                    message:  "Error: <%= error.message %>"
+                    title: "JS Error",
+                    message: "Error: <%= error.message %>"
                 })(err);
                 this.emit('end');
             }
         }))
         .pipe(webpackStream({
-          mode: "production",
-          output: {
-            filename: 'app.js',
-          },
-          module: {
-            rules: [
-              {
-                test: /\.(js)$/,
-                exclude: /(node_modules)/,
-                loader: 'babel-loader',
-                query: {
-                  presets: ['@babel/preset-env']
-                }
-              }
-            ]
-          }
+            mode: "production",
+            output: {
+                filename: 'app.js',
+            },
+            module: {
+                rules: [
+                    {
+                        test: /\.(js)$/,
+                        exclude: /(node_modules)/,
+                        loader: 'babel-loader',
+                        query: {
+                            presets: ['@babel/preset-env']
+                        }
+                    }
+                ]
+            }
         }))
         .pipe(dest(path.build.js))
-        .pipe(browserSync.reload({stream: true}));
+        .pipe(browserSync.reload({ stream: true }));
 
     cb();
 }
 
 function jsWatch(cb) {
-    return src(path.src.js, {base: srcPath + 'assets/js/'})
+    return src(path.src.js, { base: srcPath + 'assets/js/' })
         .pipe(plumber({
-            errorHandler : function(err) {
+            errorHandler: function (err) {
                 notify.onError({
-                    title:    "JS Error",
-                    message:  "Error: <%= error.message %>"
+                    title: "JS Error",
+                    message: "Error: <%= error.message %>"
                 })(err);
                 this.emit('end');
             }
         }))
         .pipe(webpackStream({
-          mode: "development",
-          output: {
-            filename: 'app.js',
-          }
+            mode: "development",
+            output: {
+                filename: 'app.js',
+            }
         }))
         .pipe(dest(path.build.js))
-        .pipe(browserSync.reload({stream: true}));
+        .pipe(browserSync.reload({ stream: true }));
 
     cb();
 }
@@ -198,9 +198,9 @@ function jsWatch(cb) {
 function images(cb) {
     return src(path.src.images)
         .pipe(imagemin([
-            imagemin.gifsicle({interlaced: true}),
-            imagemin.mozjpeg({quality: 95, progressive: true}),
-            imagemin.optipng({optimizationLevel: 5}),
+            imagemin.gifsicle({ interlaced: true }),
+            imagemin.mozjpeg({ quality: 95, progressive: true }),
+            imagemin.optipng({ optimizationLevel: 5 }),
             imagemin.svgo({
                 plugins: [
                     { removeViewBox: true },
@@ -209,7 +209,7 @@ function images(cb) {
             })
         ]))
         .pipe(dest(path.build.images))
-        .pipe(browserSync.reload({stream: true}));
+        .pipe(browserSync.reload({ stream: true }));
 
     cb();
 }
@@ -217,7 +217,7 @@ function images(cb) {
 function fonts(cb) {
     return src(path.src.fonts)
         .pipe(dest(path.build.fonts))
-        .pipe(browserSync.reload({stream: true}));
+        .pipe(browserSync.reload({ stream: true }));
 
     cb();
 }
@@ -251,3 +251,14 @@ exports.clean = clean;
 exports.build = build;
 exports.watch = watch;
 exports.default = watch;
+
+var gulp = require('gulp');
+var deploy = require('gulp-gh-pages');
+
+/**
+ * Push build to gh-pages
+ */
+gulp.task('deploy', function () {
+    return gulp.src("./dist/**/*")
+        .pipe(deploy())
+});

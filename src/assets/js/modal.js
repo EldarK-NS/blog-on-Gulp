@@ -9,7 +9,7 @@ modalBtn.forEach(item => {
         let modalId = $this.getAttribute('data-modal')
         let modal = document.getElementById(modalId);
         let modalContent = modal.querySelector('.modal__content');
-
+        console.log(modal)
         modalContent.addEventListener('click', event => {
             event.stopPropagation();
         })
