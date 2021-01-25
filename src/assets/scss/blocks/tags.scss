@@ -1,0 +1,23 @@
+.tags {
+    display: flex;
+    flex-wrap: wrap; //?
+    margin-bottom: 3rem;// если появяться еще какие-нибудь элементы
+}
+
+.tags__item {
+    margin-right: 1rem; // отступ друг от друга
+    margin-bottom: 1rem; //если теги будут идти в 2 строки
+
+    color: $white;
+    font-weight: 400;
+    font-size: 1.1rem;
+    text-align: center;
+
+    line-height: 1.3;
+
+    background-color: #ea8c1e;
+    border-radius: 3px;
+
+    padding: 0.4rem 0.9rem;
+    
+}
